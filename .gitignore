@@ -1,0 +1,11 @@
+.vs/
+.vscode/
+PackingTracer/bin/
+PackingTracer/obj/
+PackingTracer.Data/bin/
+PackingTracer.Data/obj/
+PackingTracer.Data/Migrations/
+PackingTracer.Service/bin/
+PackingTracer.Service/obj/
+obj/
+PackingTracer.sln
