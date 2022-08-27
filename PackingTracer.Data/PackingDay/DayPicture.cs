@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PackingTracer.Data.PackingDay;
 
 namespace PackingTracer.Data.HourlyTarget
 {
     public class DayPicture
     {
-        DateTime WorkingDay { get; set; }
-        List<int> PcsPackedPerHour { get; set; }
+        public DateTime WorkingDay { get; set; }
+        public List<HourlyOutput> OutputPerHour { get; set; }
     }
 }
