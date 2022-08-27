@@ -10,13 +10,15 @@ namespace PackingTracer.Service.Services
 {
     public class DailyTargetService : IDailyTargetService
     {
-        private readonly dbEngine dbEngine = new dbEngine();
-
-        
+        private readonly DbEng db = new DbEng();
 
         public DayPicture GetDayResult(DateTime day)
         {
-            var result = dbEngine.GetQuantityOfPackedSmc2MotorsByDay(day);
+            DayPicture dayPicture = new DayPicture();
+
+            var dailyPacked = db.GetQuantityOfPackedSmc2MotorsByWholeDay(day);
+
+
             return result;
         }
     }
