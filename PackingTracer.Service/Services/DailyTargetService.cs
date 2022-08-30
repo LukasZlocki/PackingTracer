@@ -12,14 +12,14 @@ namespace PackingTracer.Service.Services
     {
         private readonly DbEng db = new DbEng();
 
-        public DayPicture GetDayResult(DateTime day)
+        public DayPicture GetDayResult()
         {
             DayPicture dayPicture = new DayPicture();
 
-            var dailyPacked = db.GetQuantityOfPackedSmc2MotorsByWholeDay(day);
+            var dailyPacked = db.GetQuantityOfPackedSmc2MotorsByWholeDay();
 
 
-            return result;
+            return dayPicture;
         }
     }
 }

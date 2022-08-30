@@ -7,4 +7,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PackingTracer.Data\PackingTracer.Data.csproj" />
+    <ProjectReference Include="..\PackingTracer.Service\PackingTracer.Service.csproj" />
+  </ItemGroup>
+
 </Project>

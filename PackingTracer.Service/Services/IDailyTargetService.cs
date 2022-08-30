@@ -9,6 +9,6 @@ namespace PackingTracer.Service.Services
 {
     internal interface IDailyTargetService
     {
-        public DayPicture GetDayResult(DateTime day);
+        public DayPicture GetDayResult();
     }
 }
