@@ -6,9 +6,9 @@ namespace PackingTracer.Service.DbEngine
 {
     public class DbEng
     {
-        static string SERVER_CONFIG = "Data Source=DESKTOP-4AAFF58\\SQLEXPRESS;Initial Catalog=dbo.Unit_EventLog;Integrated Security=True";
+        static string SERVER_CONFIG = "Data Source=DESKTOP-4AAFF58\\SQLEXPRESS;Initial Catalog=dbo.Unit_EventLog;Integrated Security=True; TrustServerCertificate=True";
 
-        public PackedPerDay GetQuantityOfPackedSmc2MotorsByWholeDay(DateTime day)
+        public PackedPerDay GetQuantityOfPackedSmc2MotorsByWholeDay()
         {
             // ToDo : Write connection to DataBase and SQL query here
 
@@ -18,7 +18,9 @@ namespace PackingTracer.Service.DbEngine
 
             string connectionString = SERVER_CONFIG;
             //string queryString = "select * from GO_SMC.dbo.Unit_EventLog where StationID = 210 and PostEventStateID = 2105 and Created between getdate() - 4 and GETDATE()";
-            string queryString = "SELECT * FROM GO_SMC.dbo.Unit_EventLogwhere StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '2022-08-23' AND '2022-08-23 ORDERED BY Created ASC";
+            //string queryString = "SELECT * FROM GO_SMC.dbo.Unit_EventLogwhere StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '2022-08-23' AND '2022-08-23 ORDERED BY Created ASC";
+            string queryString = "SELECT * FROM [dbo.Unit_EventLog].dbo.dbPackingSMC WHERE StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '2022-08-23 00:00:00' AND '2022-08-23 23:59:59' ORDER BY Created ASC";
+
 
             using (SqlConnection connection = new SqlConnection(connectionString)) 
             {
