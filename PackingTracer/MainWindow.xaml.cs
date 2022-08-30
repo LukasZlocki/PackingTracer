@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PackingTracer.Service.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace PackingTracer
         public MainWindow()
         {
             InitializeComponent();
+
+            giveMeData();
         }
+
+        
+
+        public void giveMeData()
+        {
+            DailyTargetService service = new DailyTargetService();
+            service.GetDayResult();
+        }
+
+
+
+
     }
 }
