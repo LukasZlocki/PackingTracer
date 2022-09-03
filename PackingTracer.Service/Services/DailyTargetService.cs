@@ -14,9 +14,10 @@ namespace PackingTracer.Service.Services
 
         public DayPicture GetDayResult()
         {
+            DateTime day = (DateTime.Now).Date;
             DayPicture dayPicture = new DayPicture();
 
-            var dailyPacked = db.GetQuantityOfPackedSmc2MotorsByWholeDay();
+            var dailyPacked = db.GetQuantityOfPackedSmc2MotorsByWholeDay(day);
 
 
             return dayPicture;
