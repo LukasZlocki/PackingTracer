@@ -2,6 +2,7 @@
 {
     public class PackedUnit
     {
-        public DateTime PackedProduct { get; set; }
+        public int Hour { get; set; }
+        public DateTime PackedDate { get; set; }
     }
 }

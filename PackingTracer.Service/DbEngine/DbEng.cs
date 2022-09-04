@@ -6,21 +6,28 @@ namespace PackingTracer.Service.DbEngine
 {
     public class DbEng
     {
+        // ToDo: server config load from setup file
         static string SERVER_CONFIG = "Data Source=DESKTOP-4AAFF58\\SQLEXPRESS;Initial Catalog=dbo.Unit_EventLog;Integrated Security=True; TrustServerCertificate=True";
 
-        public PackedPerDay GetQuantityOfPackedSmc2MotorsByWholeDay(DateTime day)
+        /// <summary>
+        /// Returns WorkDaySheet object by DateTime day
+        /// </summary>
+        /// <param name="day">DateTime day</param>
+        /// <returns>WorkDaySheet object</returns>
+        public WorkDaySheet GetQuantityOfPackedSmc2MotorsByWholeDay3Shifts(DateTime day)
         {
-            // Gathering data from SQL for whole packed units in particular day
-            PackedPerDay packedPerDay = new PackedPerDay();
+            WorkDaySheet workDaySheet = new WorkDaySheet();
 
             string _day = day.ToString("d");
-            _day = "8/23/2022";  // <-- delete this to gather data on user date request
+            string _dayNext = day.AddDays(1).ToString("d");
+
+            // ToDo: Query load from file
+            string queryString = "SELECT DATEPART(HOUR, Created) AS[WorkingHour], Created " +
+                           "FROM[dbo.Unit_EventLog].dbo.dbPackingSMC " +
+                               "WHERE StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '" + _day + " 06:00:00' AND '" + _dayNext + " 05:59:59' " +
+                                   "ORDER BY Created";
 
             string connectionString = SERVER_CONFIG;
-            //string queryString = "select * from GO_SMC.dbo.Unit_EventLog where StationID = 210 and PostEventStateID = 2105 and Created between getdate() - 4 and GETDATE()";
-            //string queryString = "SELECT * FROM GO_SMC.dbo.Unit_EventLogwhere StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '2022-08-23' AND '2022-08-23 ORDERED BY Created ASC";
-            string queryString = "SELECT * FROM [dbo.Unit_EventLog].dbo.dbPackingSMC WHERE StationID = 210 AND PostEventStateID = 2105 AND Created BETWEEN '" + _day +  " 00:00:00' AND '" + _day + " 23:59:59' ORDER BY Created ASC";
-
 
             using (SqlConnection connection = new SqlConnection(connectionString)) 
             {
@@ -30,26 +37,18 @@ namespace PackingTracer.Service.DbEngine
 
                 while (reader.Read())
                 {
-                    ReadSqlSingleRows((IDataRecord)reader, ref packedPerDay);
+                    PackedUnit packedUnit = new PackedUnit();
+
+                    packedUnit.Hour = (int)reader["WorkingHour"];
+                    packedUnit.PackedDate = (DateTime)reader["Created"];
+
+                    workDaySheet.Packed.Add(packedUnit);
                 }
                 reader.Close();
             }
-
-            return packedPerDay;
+            return workDaySheet;
         }
         
-
-        // add packed unit date to list of packed products
-        private void ReadSqlSingleRows(IDataRecord record, ref PackedPerDay day )
-        {
-            PackedUnit packedUnit = new PackedUnit();
-
-            packedUnit.PackedProduct = Convert.ToDateTime(record[8]);
-
-            day.Day = packedUnit.PackedProduct;
-            day.PackedUnits.Add(packedUnit);
-        }
-
 
     }
 }
