@@ -6,5 +6,11 @@ namespace PackingTracer.Data.HourlyTarget
     {
         public DateTime WorkingDay { get; set; }
         public List<HourlyOutput> OutputPerHour { get; set; }
+
+        public DayPicture()
+        {
+            OutputPerHour = new List<HourlyOutput>();
+        }
+
     }
 }
