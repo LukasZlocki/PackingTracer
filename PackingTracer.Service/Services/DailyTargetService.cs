@@ -21,8 +21,6 @@ namespace PackingTracer.Service.Services
 
             workDaySheet = db.GetQuantityOfPackedSmc2MotorsByWholeDay3Shifts(day);
 
-            // ToDo: Code transfering workDaySheet data to DayPicture by calculating: *hourly output per proper hour, *dividing data to 3xshifts, *null = 0 pcs
-
             // calculating: *hourly output per proper hour / 3x shifts , data is store in dayPicture object
             HourlyOutput hourlyOutput = new HourlyOutput();
             for (int hour = 0; hour < 24; hour++)

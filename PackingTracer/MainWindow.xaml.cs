@@ -28,7 +28,7 @@ namespace PackingTracer
             giveMeData();
         }
 
-        
+        // ToDo: Add c# wpf component to present gathered data for -4 days 
 
         public void giveMeData()
         {
@@ -37,7 +37,17 @@ namespace PackingTracer
         }
 
 
+        private void LoadData(object sender, RoutedEventArgs e)
+        {
+            // ToDo : Code Loading data base on picked date
 
+        }
+
+
+        private void ScreenRefresh()
+        {
+            // ToDo : Hard code results for each shift
+        }
 
     }
 }
