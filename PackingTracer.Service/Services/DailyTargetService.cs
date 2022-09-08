@@ -21,6 +21,13 @@ namespace PackingTracer.Service.Services
 
             workDaySheet = db.GetQuantityOfPackedSmc2MotorsByWholeDay3Shifts(day);
 
+            // calculating: *hourly output per proper hour / 3x shifts , data is store in dayPicture object
+            HourlyOutput hourlyOutput = new HourlyOutput();
+            for (int hour = 0; hour < 24; hour++)
+            {
+                int _hourlyCount = workDaySheet.Packed.Where(x => x.Hour == hour).Count();
+                dayPicture.OutputPerHour.Add(new HourlyOutput { Hour = hour, Output = _hourlyCount });
+            }
             return dayPicture;
         }
 
