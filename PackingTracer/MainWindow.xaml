@@ -27,8 +27,7 @@
         <!-- 1st shift data presentation -->
         <StackPanel Grid.Column="0" Grid.Row="1">
             <StackPanel Orientation="Horizontal" >
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana: " Width="120" />
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text=" xx " Width="120" />
+                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana: #1" Width="120" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
@@ -57,7 +56,7 @@
                     <TextBox Height="22" BorderThickness="0" FontSize="16" Text="Suma spakowanych : " />
                 </StackPanel>
                 <StackPanel>
-                    <TextBox Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
+                    <TextBox x:Name="txtPcsSUM_Shift1" Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -66,8 +65,7 @@
         <!-- 2nd shift data presentation -->
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Orientation="Horizontal" >
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana: " Width="120" />
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text=" xx " Width="120" />
+                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana:  #2" Width="120" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
@@ -96,7 +94,7 @@
                     <TextBox Height="22" BorderThickness="0" FontSize="16" Text="Suma spakowanych : " />
                 </StackPanel>
                 <StackPanel>
-                    <TextBox Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
+                    <TextBox x:Name="txtPcsSUM_Shift2" Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -105,8 +103,7 @@
         <!-- 3rd shift data presentation -->
         <StackPanel Grid.Column="2" Grid.Row="1">
             <StackPanel Orientation="Horizontal" >
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana: " Width="120" />
-                <TextBox Height="22" BorderThickness="0" FontSize="18" Text=" xx " Width="120" />
+                <TextBox Height="22" BorderThickness="0" FontSize="18" Text="Zmiana:  #3" Width="120" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
@@ -135,7 +132,7 @@
                     <TextBox Height="22" BorderThickness="0" FontSize="16" Text="Suma spakowanych : " />
                 </StackPanel>
                 <StackPanel>
-                    <TextBox Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
+                    <TextBox x:Name="txtPcsSUM_Shift3" Height="22" BorderThickness="0"  FontSize="16" Text=" xx " />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
