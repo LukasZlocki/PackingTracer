@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PackingTracer"
         mc:Ignorable="d"
-        Title="PackingTracer" Height="450" Width="800">
+        Title="PackingTracer v1.00" Height="340" Width="650">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
