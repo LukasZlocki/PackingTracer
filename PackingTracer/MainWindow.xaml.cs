@@ -27,37 +27,20 @@ namespace PackingTracer
         public MainWindow()
         {
             InitializeComponent();
-
-            // loading data with hourly output.
-            DayPic = LoadDataFromDataBase();
-
-            // refresh screen with data
-            ScreenDataRefresh(DayPic);
-
-
         }
 
-        // ToDo: Add c# wpf component to present gathered data for -4 days 
 
-        public DayPicture LoadDataFromDataBase()
+        public DayPicture LoadDataFromDataBase(DateTime data)
         {
             DayPicture _daypicture = new DayPicture();
             DailyTargetService service = new DailyTargetService();
-            _daypicture = service.GetDayResult();
+            _daypicture = service.GetDayResult(data);
             return _daypicture;
         }
 
 
-        private void LoadData(object sender, RoutedEventArgs e)
-        {
-            // ToDo : Code Loading data base on picked date
-
-        }
-
         private void ScreenDataRefresh(DayPicture dayPicture)
         {
-            // ToDo : Hard code results for each shift
-
             // Shift #1
 
             txtPcsH01_Shift1.Text = "" + dayPicture.OutputPerHour[6].Output + " " + dayPicture.OutputPerHour[6].Hour;
@@ -94,7 +77,6 @@ namespace PackingTracer
             txtPcsH08_Shift3.Text = "" + dayPicture.OutputPerHour[5].Output + " " + dayPicture.OutputPerHour[5].Hour;
 
             txtPcsSUM_Shift3.Text = "" + (CalculateSum(dayPicture, 22, 23) + CalculateSum(dayPicture, 0, 5));
-
         }
 
         // Calculate sum of hourly outputs from given hour range
@@ -108,5 +90,17 @@ namespace PackingTracer
             return _sum;
         }
 
+        private void btnLoadData(object sender, RoutedEventArgs e)
+        {
+            // ToDo : Code Loading data base on picked date
+            DateTime data = Convert.ToDateTime(dpDataPicker.Text);
+
+            // loading data with hourly output.
+            DayPic = LoadDataFromDataBase(data);
+
+            // refresh screen with data
+            ScreenDataRefresh(DayPic);
+
+        }
     }
 }
