@@ -108,5 +108,9 @@ namespace PackingTracer
             return _sum;
         }
 
+        private void btnLoadData(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
