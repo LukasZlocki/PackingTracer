@@ -18,15 +18,21 @@ namespace PackingTracer
         }
 
 
-        public DayPicture LoadDataFromDataBase(DateTime data)
+        #region Button
+        private void btnLoadData(object sender, RoutedEventArgs e)
         {
-            DayPicture _daypicture = new DayPicture();
-            DailyTargetService service = new DailyTargetService();
-            _daypicture = service.GetDayResult(data);
-            return _daypicture;
-        }
+            DateTime data = Convert.ToDateTime(dpDataPicker.Text);
 
-        #region Screen - data
+            // loading data with hourly output.
+            DayPic = LoadDataFromDataBase(data);
+
+            // refresh screen with data
+            ScreenDataRefresh(DayPic);
+        }
+        #endregion
+        
+
+        #region Screen - data visualisation
         private void ScreenDataRefresh(DayPicture dayPicture)
         {
             // Shift #1
@@ -67,6 +73,16 @@ namespace PackingTracer
         }
         #endregion
 
+
+        #region Data manipulation
+        public DayPicture LoadDataFromDataBase(DateTime data)
+        {
+            DayPicture _daypicture = new DayPicture();
+            DailyTargetService service = new DailyTargetService();
+            _daypicture = service.GetDayResult(data);
+            return _daypicture;
+        }
+
         // Calculate sum of hourly outputs from given hour range
         private int CalculateSum(DayPicture dp, int start, int end)
         {
@@ -77,18 +93,8 @@ namespace PackingTracer
             }
             return _sum;
         }
+        #endregion
 
-        private void btnLoadData(object sender, RoutedEventArgs e)
-        {
-            // ToDo : Code Loading data base on picked date
-            DateTime data = Convert.ToDateTime(dpDataPicker.Text);
 
-            // loading data with hourly output.
-            DayPic = LoadDataFromDataBase(data);
-
-            // refresh screen with data
-            ScreenDataRefresh(DayPic);
-
-        }
     }
 }
