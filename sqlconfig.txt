@@ -1,1 +1,1 @@
-Data Source=DESKTOP-4AAFF58\SQLEXPRESS;Initial Catalog=dbo.Unit_EventLog;Integrated Security=True; TrustServerCertificate=True
+Data Source=LUKMAINHUB\SQLEXPRESS;Initial Catalog=dbo.Unit_EventLog;Integrated Security=True; TrustServerCertificate=True
